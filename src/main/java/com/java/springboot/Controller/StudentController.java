@@ -55,4 +55,15 @@ public class StudentController {
         System.out.println(student.getLastName());
         return student;
     }
+
+    // http://localhost:8080/student/10/update
+    @PutMapping("student/{id}/update")
+    public Student putStudent(@RequestBody Student student,@PathVariable("id") int studentID){
+        student.setId(studentID);
+        System.out.println(student.getFirstName());
+        System.out.println(student.getLastName());
+        return student;
+    }
+
+
 }
