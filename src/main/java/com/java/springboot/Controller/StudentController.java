@@ -30,9 +30,11 @@ public class StudentController {
     }
 
     //{id} - URI template veriable
-    // http://localhost:8080/students/1
-    @GetMapping("students/{id}")
-    public Student getSudentWithId(@PathVariable("id") int StudentId){
-        return new Student(StudentId,"usman","shbbir");
+    // http://localhost:8080/students/1/usman/shabbir
+    @GetMapping("students/{id}/{first-name}/{last-name}")
+    public Student getSudentWithId(@PathVariable("id") int StudentId,
+                                   @PathVariable("first-name") String firstName,
+                                   @PathVariable("last-name") String lastName){
+        return new Student(StudentId,firstName,lastName);
     }
 }
