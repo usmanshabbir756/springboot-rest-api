@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("students")
 public class StudentController {
 
     //HTTP GET REQUEST
@@ -23,7 +24,7 @@ public class StudentController {
     }
 
     // http://localhost:8080/students
-    @GetMapping("students")
+    @GetMapping
     public ResponseEntity<List<Student>> getStudents(){
         List<Student> students=new ArrayList<>();
         students.add(new Student(1,"Usman","Shabbir"));
@@ -34,7 +35,7 @@ public class StudentController {
 
     //{id} - URI template veriable
     // http://localhost:8080/students/1/usman/shabbir
-    @GetMapping("students/{id}/{first-name}/{last-name}")
+    @GetMapping("{id}/{first-name}/{last-name}")
     public ResponseEntity<Student> getSudentWithId(@PathVariable("id") int StudentId,
                                    @PathVariable("first-name") String firstName,
                                    @PathVariable("last-name") String lastName){
@@ -43,15 +44,15 @@ public class StudentController {
 
 
     // http://localhost:8080/students/query?id=2&firstName=usman&lastName=shabbir
-    @GetMapping("students/query")
+    @GetMapping("query")
     public ResponseEntity<Student> studentVeriableRequestParam(@RequestParam int id,
                                                @RequestParam String firstName,
                                                @RequestParam String lastName){
         return ResponseEntity.ok(new Student(id,firstName,lastName));
     }
 
-    // http://localhost:8080/student/created
-    @PostMapping("student/created")
+    // http://localhost:8080/students/created
+    @PostMapping("created")
 //    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Student> postStudent(@RequestBody Student student){
         System.out.println(student.getId());
@@ -60,8 +61,8 @@ public class StudentController {
         return new ResponseEntity<>(student,HttpStatus.CREATED);
     }
 
-    // http://localhost:8080/student/10/update
-    @PutMapping("student/{id}/update")
+    // http://localhost:8080/students/10/update
+    @PutMapping("{id}/update")
     public ResponseEntity<Student> putStudent(@RequestBody Student student,@PathVariable("id") int studentID){
         student.setId(studentID);
         System.out.println(student.getFirstName());
@@ -70,8 +71,8 @@ public class StudentController {
     }
 
 
-    // http://localhost:8080/student/4/delete
-    @DeleteMapping("student/{id}/delete")
+    // http://localhost:8080/students/4/delete
+    @DeleteMapping("{id}/delete")
     public ResponseEntity<String> deleteStudent(@PathVariable("id") int studentId){
         System.out.println(studentId);
         return ResponseEntity.ok("Student deleted sucessfully");
