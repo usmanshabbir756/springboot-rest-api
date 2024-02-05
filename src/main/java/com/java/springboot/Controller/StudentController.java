@@ -1,10 +1,8 @@
 package com.java.springboot.Controller;
 
 import com.java.springboot.Bean.Student;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,4 +46,13 @@ public class StudentController {
         return new Student(id,firstName,lastName);
     }
 
+    // http://localhost:8080/student/created
+    @PostMapping("student/created")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Student postStudent(@RequestBody Student student){
+        System.out.println(student.getId());
+        System.out.println(student.getFirstName());
+        System.out.println(student.getLastName());
+        return student;
+    }
 }
