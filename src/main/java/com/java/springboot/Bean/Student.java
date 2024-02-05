@@ -2,12 +2,12 @@ package com.java.springboot.Bean;
 
 public class Student {
     private int id;
-    private  String fisrName;
+    private  String firstName;
     private  String lastName;
 
-    public Student(int id, String fisrName, String lastName) {
+    public Student(int id, String firstName, String lastName) {
         this.id = id;
-        this.fisrName = fisrName;
+        this.firstName= firstName;
         this.lastName = lastName;
     }
 
@@ -19,12 +19,12 @@ public class Student {
         this.id = id;
     }
 
-    public String getFisrName() {
-        return fisrName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFisrName(String fisrName) {
-        this.fisrName = fisrName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
