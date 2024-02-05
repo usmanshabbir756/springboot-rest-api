@@ -66,4 +66,12 @@ public class StudentController {
     }
 
 
+    // http://localhost:8080/student/4/delete
+    @DeleteMapping("student/{id}/delete")
+    public String deleteStudent(@PathVariable("id") int studentId){
+        System.out.println(studentId);
+        return "Student deleted sucessfully";
+    }
+
+
 }
